@@ -6,3 +6,8 @@ categories: playwright testing
 ---
 
 Hello, world!
+
+```
+Playwright code
+goes in here
+```
