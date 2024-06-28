@@ -64,7 +64,7 @@ two_weeks_from_today = today + relativedelta(days=14)
 ```
 relativedelta(arg1=x,arg2=y,arg3=z...)
 
-years, months, weeks, days, hours, minutes, seconds, microseconds:
+years, months, weeks, days, hours, minutes, seconds
 ```
 
 positive or negative deltas
