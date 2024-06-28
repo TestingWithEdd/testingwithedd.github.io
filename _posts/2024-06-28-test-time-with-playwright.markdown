@@ -2,7 +2,7 @@
 layout: post
 title:  "Test Time with Playwright!"
 date:   2024-06-28
-categories: playwright testing
+categories: testing playwright
 ---
 
 Playwright released the new Clock API in v1.45 which allows us to mock the datetime object on our websites while testing. Having spent the last 3 months testing a bookings application via the API, and just starting to add UI E2E tests, this couldn't have come at a better time! In this short post I'll dive into how it's used in Python, how we can do arithmatic on dates with `dateutil`, and my initial thoughts on how I'll use it in my tests. 
