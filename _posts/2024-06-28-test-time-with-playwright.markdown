@@ -64,36 +64,7 @@ two_weeks_from_today = today + relativedelta(days=14)
 ```
 relativedelta(arg1=x,arg2=y,arg3=z...)
 
-year, month, day, hour, minute, second, microsecond:
-    Absolute information (argument is singular); adding or subtracting a
-    relativedelta with absolute information does not perform an arithmetic
-    operation, but rather REPLACES the corresponding value in the
-    original datetime with the value(s) in relativedelta.
-
 years, months, weeks, days, hours, minutes, seconds, microseconds:
-    Relative information, may be negative (argument is plural); adding
-    or subtracting a relativedelta with relative information performs
-    the corresponding arithmetic operation on the original datetime value
-    with the information in the relativedelta.
-
-weekday:
-    One of the weekday instances (MO, TU, etc) available in the
-    relativedelta module. These instances may receive a parameter N,
-    specifying the Nth weekday, which could be positive or negative
-    (like MO(+1) or MO(-2)). Not specifying it is the same as specifying
-    +1. You can also use an integer, where 0=MO. This argument is always
-    relative e.g. if the calculated date is already Monday, using MO(1)
-    or MO(-1) won't change the day. To effectively make it absolute, use
-    it in combination with the day argument (e.g. day=1, MO(1) for first
-    Monday of the month).
-
-leapdays:
-    Will add given days to the date found, if year is a leap
-    year, and the date found is post 28 of february.
-
-yearday, nlyearday:
-    Set the yearday or the non-leap year day (jump leap days).
-    These are converted to day/month/leapdays information.
 ```
 
 positive or negative deltas
