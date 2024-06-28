@@ -1,4 +1,13 @@
 entries:
+
+  - title: me
+    entries:
+      - title: email
+        url: mailto:edd@testingwithedd.com
+      - title: github
+        url: http://github.com/TestingWithEdd/
+      # - title: "keep in touch: <a href='/newsletter.html'>newsletter</a>, <a href='/feed.xml'>rss feed</a>"
+
   - title: all posts
     post_list:
       limit: 5
