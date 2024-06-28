@@ -14,7 +14,8 @@ from datetime import datetime
 
 ...
 # datetime.datetime(year, month, day, hour, minute, second)
-page.clock.install(time=datetime.datetime(2024, 6, 28, 9, 0, 0))
+page.clock.install(
+    time=datetime.datetime(2024, 6, 28, 9, 0, 0))
 ```
 
 The clock will now start from that time. Say we're testing a 5 minute sale offer; users open the site with a pop up saying "there's a sale" and after 5 minutes the pop up will show a string saying the "offer has expired".
@@ -36,13 +37,16 @@ expect(page.get_by_text("offer has expired")).to_be_visible()
 When we're testing times we may want to be specific that something happens before, on the second, and immediately after. This is a little hard if time is rolling but the Clock API does let us pause at times too. 
 
 ```
-page.clock.pause_at(datetime.datetime(2024, 12, 31, 23, 59, 59))
+page.clock.pause_at(
+    datetime.datetime(2024, 12, 31, 23, 59, 59))
 # do something
 
-page.clock.pause_at(datetime.datetime(2025, 01, 01, 00, 00, 00))
+page.clock.pause_at(
+    datetime.datetime(2025, 01, 01, 00, 00, 00))
 # do something else
 
-page.clock.pause_at(datetime.datetime(2025, 01, 01, 00, 00, 01))
+page.clock.pause_at(
+    datetime.datetime(2025, 01, 01, 00, 00, 01))
 # do something else again
 ```
 
