@@ -5,13 +5,19 @@ date:   2024-07-05
 categories: testing playwright
 ---
 
-UI-driven E2E tests are usually the slowest tests you can have, often observed when your CI pipeline spends 20 minutes running them compared to ~30 seconds for your other tests. There are a few tricks to reduce this slowness: running a subset of tests, using APIs to set up/tear down data rather than going through the UI, caching data from previous tests like auth tokens, and parallelizing tests. This blog post will focus on the latter, how to do it, and a few tricks I learned along the way :)
+UI-driven E2E tests are usually the slowest tests you can have, often observed when your CI pipeline spends 20 minutes running them compared to ~30 seconds for your other tests. There are a few tricks to reduce this slowness: running a subset of tests, using APIs to set up/tear down data rather than going through the UI, caching data from previous tests like auth tokens, and parallelizing tests. 
+
+This blog post will focus on the latter, how to do it, and a few tricks I learned along the way :)
 
 A few assumptions here - you're using Python and Pytest. The tool we will use here is `xdist`, installed like so:
 
-Copy code
+```
 pip install pytest-xdist
-Out of the box, we can now parallelize tests with `pytest --numprocess auto`, exactly as the Playwright docs tell us. This will speed up the execution time of your tests! For some of you, this may actually be enough - try it, see what happens, and close this page. I'll go into a few more advanced details below.
+```
+
+Out of the box, we can now parallelize tests with `pytest --numprocess auto`, exactly as the Playwright docs tell us. This will speed up the execution time of your tests! You can customize this to run a specific number of processes with `--numprocess {N}`, use only logical processes with `--numprocess logical`, or set an environment variable to set this value with `PYTEST_XDIST_AUTO_NUM_WORKERS={N}`. 
+
+For some of you, this may actually be enough - try it and see what happens! I'll go into a few more advanced details below.
 
 ### How does xdist work?
 Xdist follows the controller/worker pattern where it spins up a `--numprocess N` amount of workers that are pytest runners. Each worker gets the full list of tests to run and does some verification by sending back a list of all the test IDs to check each worker has all the tests required.
