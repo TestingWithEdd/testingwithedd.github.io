@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Parallelize Playwright with Xdist!"
-date:   2024-06-28
+date:   2024-07-05
 categories: testing playwright
 ---
 
