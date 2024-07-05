@@ -20,7 +20,7 @@ Out of the box, we can now parallelize tests with `pytest --numprocess auto`, ex
 For some of you, this may actually be enough - try it and see what happens! I'll go into a few more advanced details below.
 
 ### How does xdist work?
-Xdist follows the controller/worker pattern where it spins up a `--numprocess N` amount of workers that are pytest runners. Each worker gets the full list of tests to run and does some verification by sending back a list of all the test IDs to check each worker has all the tests required.
+Xdist follows the controller/worker pattern where it spins up a variable number of workers that are pytest runners. Each worker gets the full list of tests to run and does some verification by sending back a list of all the test IDs to check each worker has all the tests required.
 
 Once the controller knows the workers all have the full set of tests, it will do one of two things depending on if `dist-mode` is `each` or `load`.
 
