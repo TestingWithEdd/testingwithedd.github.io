@@ -28,7 +28,7 @@ Once the controller knows the workers all have the full set of tests, it will do
 
 `load`: the controller distributes ~25% of the tests to all workers via round-robin scheduling and then distributes the rest as and when workers are available.
 
-Why bother sending all the tests to each worker? This is useful if each worker is a different platform and you are using this to test across multiple systems. Because we're interested in parallelizing tests here, we will be focusing on `load`. The default setting is `--dist` load.
+Why bother sending all the tests to each worker? This is useful if each worker is a different platform and you are using this to test across multiple systems. Because we're interested in parallelizing tests here, we will be focusing on `load`. The default setting is `--dist load`.
 
 ### Avoiding disaster
 If you try to run all your tests in parallel, randomly allocated to workers, you open the door to flaky tests. For example, if you are logging in as the same user, you don't want two tests doing conflicting actions like changing settings to different values. Introducing groups!
@@ -53,7 +53,7 @@ def test_setting_private_to_off(page):
     # do something...
 ```
 
-We can run the tests taking groups into account with `xdist --dist loadgroup`, which acts the same as `--load` except guaranteeing groups are sent to the same worker. If the tests are already in the same file, you can get away with `xdist --dist loadfile`, but if you refactor this into different files, you'll find they start breaking each other.
+We can run the tests taking groups into account with `xdist --dist loadgroup`, which acts the same as `xdist --dist load` except guaranteeing groups are sent to the same worker. If the tests are already in the same file, you can get away with `xdist --dist loadfile`, but if you refactor this into different files, you'll find they start breaking each other.
 
 ### Issues with xdist
 One heads-up with xdist is that it will swallow your `logging`. On top of this, logging will not always be ordered. If you need to see your prints, you need to write to `sys.stderr`. You can hack this with `sys.stdout = sys.stderr`.
