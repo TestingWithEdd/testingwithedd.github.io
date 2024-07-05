@@ -15,7 +15,7 @@ A few assumptions here - you're using Python and Pytest. The tool we will use he
 pip install pytest-xdist
 ```
 
-Out of the box, we can now parallelize tests with `pytest --numprocess auto`, exactly as the Playwright docs tell us. This will speed up the execution time of your tests! You can customize this to run a specific number of processes with `--numprocess {N}`, use only logical processes with `--numprocess logical`, or set an environment variable to set this value with `PYTEST_XDIST_AUTO_NUM_WORKERS={N}`. 
+Out of the box, we can now parallelize tests with `pytest --numprocess auto`, exactly as the Playwright docs tell us. This will speed up the execution time of your tests! You can customize this to run a specific number of processes with `-n {N}`, use only logical processes with `-n logical`, or set an environment variable to set this value with `PYTEST_XDIST_AUTO_NUM_WORKERS={N}`. Note, to use the correct number of logical processes you'll need psutil (installed with `pip install psutil` otherwise it'll default to `--n auto`). 
 
 For some of you, this may actually be enough - try it and see what happens! I'll go into a few more advanced details below.
 
