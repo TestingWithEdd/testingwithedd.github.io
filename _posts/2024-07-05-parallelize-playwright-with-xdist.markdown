@@ -22,7 +22,7 @@ For some of you, this may actually be enough - try it and see what happens! I'll
 ### How does xdist work?
 Xdist follows the controller/worker pattern where it spins up a variable number of workers that are pytest runners. Each worker gets the full list of tests to run and does some verification by sending back a list of all the test IDs to check each worker has all the tests required.
 
-Once the controller knows the workers all have the full set of tests, it will do one of two things depending on if `dist-mode` is `each` or `load`.
+Once the controller knows the workers all have the full set of tests, it will do one of two things depending on if `dist-mode` is `each` or `load` (or a variation of load).
 
 `each`: the controller sends the full list of test indexes to each node, so basically each node will run all the tests.
 
